@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
+using ResellerLoungeMe.Data.APIs;
 using ResellerLoungeMe.Models;
 using System;
 using System.Collections.Generic;
@@ -20,7 +22,10 @@ namespace ResellerLoungeMe.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            AirportAdapter airportAdapter = new AirportAdapter();
+            var airportList = airportAdapter.GetAirports();
+            
+            return View(airportList);
         }
 
         public IActionResult Privacy()
