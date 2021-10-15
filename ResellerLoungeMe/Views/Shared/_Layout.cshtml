@@ -24,11 +24,11 @@
     <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3  navbar-transparent ">
 
         <div class="container">
-            <a class="navbar-brand text-white" data-placement="bottom" asp-area="" asp-controller="Home" asp-action="Index">Reseller Lounge Me</a>
+            <a class="navbar-brand text-white" data-placement="bottom" asp-area="" asp-controller="Airports" asp-action="Index">Reseller Lounge Me</a>
             <div class="collapse navbar-collapse pt-3 pb-2 py-lg-0 ms-lg-12 ps-lg-5">
                 <ul class="navbar-nav navbar-nav-hover w-100">
                     <li class="nav-item dropdown dropdown-hover mx-2 ms-lg-6">
-                        <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" asp-area="" asp-controller="Home" asp-action="Index">AIRPORTS</a>
+                        <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" asp-area="" asp-controller="Airports" asp-action="Index">AIRPORTS</a>
                     </li>
                     <li class="nav-item dropdown dropdown-hover mx-2 ms-lg-6">
                         <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" asp-area="" asp-controller="Home" asp-action="Activities">ACTIVITES</a>
@@ -38,36 +38,7 @@
         </div>
     </nav>
 
-    <header class="bg-gradient-dark">
-        <div class="page-header min-vh-50" style="background-image: url('/assets/img/plane.jpg'); background-position-y: 50%;">
-            <span class="mask bg-gradient-info opacity-8"></span>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center mx-auto my-auto">
-                        <h1 class="text-white">@ViewData["Title"]</h1>
-                        <p class="lead mb-4 text-white opacity-8">@ViewData["SubTitle"]</p>
-                        <input id="airports" style="width: 100%;" />
-
-                    </div>
-                </div>
-            </div>
-            <div class="position-absolute w-100 z-index-1 bottom-0">
-                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
-                    <defs>
-                        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
-                    </defs>
-                    <g class="moving-waves">
-                        <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40"></use>
-                        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)"></use>
-                        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)"></use>
-                        <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)"></use>
-                        <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)"></use>
-                        <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255,255,255,1"></use>
-                    </g>
-                </svg>
-            </div>
-        </div>
-    </header>
+    
     @RenderBody()
 
     <footer class="border-top footer text-muted">

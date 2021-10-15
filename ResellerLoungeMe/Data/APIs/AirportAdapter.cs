@@ -22,5 +22,17 @@ namespace ResellerLoungeMe.Data.APIs
 
             return result;
         }
+
+        public List<AirportDto> GetAirports(string searchKey)
+        {
+            List<AirportDto> result = new List<AirportDto>();
+            var response = client.GetAsync($"{BaseUrl}/reseller/search?searchKey={searchKey}").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                result = JsonConvert.DeserializeObject<List<AirportDto>>(response.Content.ReadAsStringAsync().Result);
+            }
+
+            return result;
+        }
     }
 }

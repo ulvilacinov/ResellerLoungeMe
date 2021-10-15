@@ -3,64 +3,31 @@
 
 // Write your JavaScript code.
 
-    $(document).ready(function () {
-        var data = [
-            "Albania",
-            "Andorra",
-            "Armenia",
-            "Austria",
-            "Azerbaijan",
-            "Belarus",
-            "Belgium",
-            "Bosnia & Herzegovina",
-            "Bulgaria",
-            "Croatia",
-            "Cyprus",
-            "Czech Republic",
-            "Denmark",
-            "Estonia",
-            "Finland",
-            "France",
-            "Georgia",
-            "Germany",
-            "Greece",
-            "Hungary",
-            "Iceland",
-            "Ireland",
-            "Italy",
-            "Kosovo",
-            "Latvia",
-            "Liechtenstein",
-            "Lithuania",
-            "Luxembourg",
-            "Macedonia",
-            "Malta",
-            "Moldova",
-            "Monaco",
-            "Montenegro",
-            "Netherlands",
-            "Norway",
-            "Poland",
-            "Portugal",
-            "Romania",
-            "Russia",
-            "San Marino",
-            "Serbia",
-            "Slovakia",
-            "Slovenia",
-            "Spain",
-            "Sweden",
-            "Switzerland",
-            "Turkey",
-            "Ukraine",
-            "United Kingdom",
-            "Vatican City"
-        ];
+$(document).ready(function () {
 
-        //create AutoComplete UI component
-        $("#airports").kendoAutoComplete({
-        dataSource: data,
-            filter: "startswith",
-            placeholder: "Select airport...",
-        });
+
+
+    //create AutoComplete UI component
+    $("#airports").kendoAutoComplete({
+        dataSource: {
+            type: "json",
+            serverFiltering: true,
+            transport: {
+                read: "Airports/GetAirports",
+                parameterMap: function (options, operation) {
+                    if (operation == "read" && options.filter.filters.length > 0) {
+                        return { searchKey: options.filter.filters[0].value };
+                    }
+                }
+            }
+        },
+        filter: "contains",
+        placeholder: "Select airport...",
+        dataTextField: "text",
+        dataValueField: "value",
+        template: "<a href='Airports/Lounges/#: data.value #'>#: data.text#</a>",
+        minLength: 3,
+        select: onSelect
     });
+
+});
