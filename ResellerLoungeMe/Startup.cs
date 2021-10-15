@@ -62,7 +62,7 @@ namespace ResellerLoungeMe
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Airports}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

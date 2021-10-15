@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\90505\\source\\repos\\ResellerLoungeMe\\ResellerLoungeMe\\ResellerLoungeMe.csproj": {}
+    "E:\\ulvi\\repos\\ResellerLoungeMe\\ResellerLoungeMe\\ResellerLoungeMe.csproj": {}
   },
   "projects": {
-    "C:\\Users\\90505\\source\\repos\\ResellerLoungeMe\\ResellerLoungeMe\\ResellerLoungeMe.csproj": {
+    "E:\\ulvi\\repos\\ResellerLoungeMe\\ResellerLoungeMe\\ResellerLoungeMe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\90505\\source\\repos\\ResellerLoungeMe\\ResellerLoungeMe\\ResellerLoungeMe.csproj",
+        "projectUniqueName": "E:\\ulvi\\repos\\ResellerLoungeMe\\ResellerLoungeMe\\ResellerLoungeMe.csproj",
         "projectName": "ResellerLoungeMe",
-        "projectPath": "C:\\Users\\90505\\source\\repos\\ResellerLoungeMe\\ResellerLoungeMe\\ResellerLoungeMe.csproj",
+        "projectPath": "E:\\ulvi\\repos\\ResellerLoungeMe\\ResellerLoungeMe\\ResellerLoungeMe.csproj",
         "packagesPath": "C:\\Users\\90505\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\90505\\source\\repos\\ResellerLoungeMe\\ResellerLoungeMe\\obj\\",
+        "outputPath": "E:\\ulvi\\repos\\ResellerLoungeMe\\ResellerLoungeMe\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\90505\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -51,6 +51,10 @@
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
               "version": "[3.1.20, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
