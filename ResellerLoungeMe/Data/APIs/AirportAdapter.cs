@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ResellerLoungeMe.Models.API;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 
@@ -32,6 +34,18 @@ namespace ResellerLoungeMe.Data.APIs
                 result = JsonConvert.DeserializeObject<List<AirportDto>>(response.Content.ReadAsStringAsync().Result);
             }
 
+            return result;
+        }
+
+        public AirportDto GetAirport(int id)
+        {
+            AirportDto result = new AirportDto();
+            var response = client.GetAsync($"{BaseUrl}/reseller/airports/{id}").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                result = JsonConvert.DeserializeObject<AirportDto>(response.Content.ReadAsStringAsync().Result);
+            }
+            result.SelectListTerminals = result.Terminals?.Select(t => new SelectListItem { Text = t.Name, Value = t.Id.ToString() }).ToList();
             return result;
         }
     }
