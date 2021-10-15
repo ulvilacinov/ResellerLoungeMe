@@ -28,7 +28,7 @@ namespace ResellerLoungeMe.Controllers
             return View(airportList);
         }
 
-        public IActionResult Privacy()
+        public IActionResult Activities()
         {
             return View();
         }
