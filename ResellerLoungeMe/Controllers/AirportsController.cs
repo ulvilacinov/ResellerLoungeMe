@@ -41,7 +41,12 @@ namespace ResellerLoungeMe.Controllers
 
         public IActionResult Lounges(int id)
         {
-            return View();
+            var airportDetail = airportAdapter.GetAirport(id);
+            if (airportDetail.Id == 0)
+            {
+                return View("NotFound");
+            }
+            return View(airportDetail);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

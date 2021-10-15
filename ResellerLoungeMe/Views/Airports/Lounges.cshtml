@@ -1,5 +1,68 @@
-﻿@{
-    ViewData["Title"] = "Activities";
-    ViewData["SubTitle"] = "Search ticket with PNR number";
-}
+﻿@model ResellerLoungeMe.Models.API.AirportDto
 
+<header class="bg-gradient-dark">
+    <div class="page-header min-vh-75" style="background-image: url('/assets/img/nastuh.jpg'); background-position-y: 50%;">
+        <span class="mask bg-gradient-info opacity-8"></span>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center mx-auto my-auto">
+                    <h1 class="text-white">@Model.Name</h1>
+                    <p class="lead mb-4 text-white opacity-8">@Model.City.Name</p>
+                    @Html.DropDownList("Terminals", Model.SelectListTerminals, "All Terminal", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="position-absolute w-100 z-index-1 bottom-0">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+                </defs>
+                <g class="moving-waves">
+                    <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40"></use>
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)"></use>
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)"></use>
+                    <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)"></use>
+                    <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)"></use>
+                    <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255,255,255,1"></use>
+                </g>
+            </svg>
+        </div>
+    </div>
+</header>
+<section class="py-7">
+    <div class="container" id="lounges">
+        <div class="row">
+            @foreach (var terminal in Model.Terminals)
+            {
+                foreach (var lounge in terminal.Lounges)
+                {<a href="Lounge/Detail/@lounge.Id">
+                        <div class="col-lg-6 col-12 lounge-item" data-terminal="@terminal.Id">
+                            <div class="card card-profile overflow-hidden">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6 col-12 pe-lg-0">
+
+                                        <div class="p-3 pe-md-0">
+                                            <img class="w-100 border-radius-md" src="@lounge.Images.FirstOrDefault().Url" alt="image">
+                                        </div>
+
+                                    </div>
+                                    <div class="col-lg-8 col-md-6 col-12 ps-lg-0 my-auto">
+                                        <div class="card-body">
+                                            <h5 class="mb-0">@lounge.Name</h5>
+                                            <h6 class="text-info">$ @lounge.Price</h6>
+                                            <p class="mb-0">@terminal.Name</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+
+            }
+
+
+
+        </div>
+    </div>
+</section>
