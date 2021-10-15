@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rCE+rddMQzkT3PRL/cQ+abXRSyhRLYoETTIGwnLTwrJwajL7LlQAe1WBZOvh7CapVmZe1bjzAVFwWGrLQpKxYA==",
+  "dgSpecHash": "JlizamJU19VVTUJ9m6iEFHtCPLf8wti+fY1LrR/77AFNBoOpmaVQS00tQCfBwVZdsJ2+l+yHgax+VmEo9j5hSg==",
   "success": true,
-  "projectFilePath": "E:\\ulvi\\repos\\ResellerLoungeMe\\ResellerLoungeMe\\ResellerLoungeMe.csproj",
+  "projectFilePath": "E:\\ulvi\\ResellerLoungeMe\\ResellerLoungeMe\\ResellerLoungeMe.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\90505\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\90505\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
