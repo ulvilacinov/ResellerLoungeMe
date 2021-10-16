@@ -1,4 +1,4 @@
-﻿namespace ResellerLoungeMe.Models.API
+﻿namespace ResellerLoungeMe.Models.API.Lounge
 {
     public class LoungeFeatureDto : BaseDto
     {

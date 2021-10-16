@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ResellerLoungeMe.Models.API
+namespace ResellerLoungeMe.Models.API.Lounge
 {
     public class LoungeDto: BaseDto
     {

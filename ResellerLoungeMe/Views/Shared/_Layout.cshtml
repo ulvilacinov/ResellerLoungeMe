@@ -15,10 +15,10 @@
     <link href="~/assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="~/assets/css/soft-design-system.css?v=1.0.5" rel="stylesheet" />
-    <link href="~/lib/kendo/css/kendo.material-main-dark.min.css" rel="stylesheet" />
+    <link href="~/lib/kendo/css/kendo.material-main.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="~/lib/select2/css/select2.min.css" rel="stylesheet" />
-   
+    <script src="~/lib/jquery/dist/jquery.js"></script>
 
 </head>
 <body>
@@ -33,7 +33,13 @@
                         <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" asp-area="" asp-controller="Airports" asp-action="Index">AIRPORTS</a>
                     </li>
                     <li class="nav-item dropdown dropdown-hover mx-2 ms-lg-6">
-                        <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" asp-area="" asp-controller="Home" asp-action="Activities">ACTIVITES</a>
+                        <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" asp-area="" asp-controller="Ticket" asp-action="Index">ACTIVITES</a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-hover mx-2 ms-lg-6">
+                        <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" href="https://www.lounge.me/en/faq" target="_blank">FAQ</a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-hover mx-2 ms-lg-6">
+                        <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" href="https://www.lounge.me/en/contact" target="_blank">CONTACT</a>
                     </li>
                 </ul>
             </div>
@@ -49,7 +55,7 @@
         </div>
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.js"></script>
+    
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     <!--   Core JS Files   -->

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ResellerLoungeMe.Models.API.Lounge;
+using System;
 
 namespace ResellerLoungeMe.Models.API.User
 {

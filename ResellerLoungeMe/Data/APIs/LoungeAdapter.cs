@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using ResellerLoungeMe.Models.API;
+using ResellerLoungeMe.Models.API.Lounge;
 using System;
 using System.Collections.Generic;
 using System.Linq;

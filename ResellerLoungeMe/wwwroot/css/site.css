@@ -84,6 +84,24 @@ body {
     background-color: rgb(37, 105, 233);
 }
 
+.k-input::placeholder {
+    color: white;
+}
+
+.k-autocomplete, .k-autocomplete.k-header {
+    border-color: white;
+    color: white;
+}
+
+    .k-autocomplete:hover {
+        border-color: white;
+        color: white;
+    }
+
+    .k-autocomplete:focus-within {
+        border-color: #ffffff;
+    }
+
 .min-vh-35 {
     min-height: 35vh !important;
 }
@@ -96,11 +114,11 @@ body {
     grid-row-gap: 2px;
 }
 
-.gallery img{
-    height: 100%;
-    width: 100%;
-    border-radius: 20px;
-}
+    .gallery img {
+        height: 100%;
+        width: 100%;
+        border-radius: 20px;
+    }
 
 .gallery__item--0 {
     grid-area: 1 / 1 / 3 / 3;
@@ -128,10 +146,27 @@ body {
     color: white;
 }
 
-.current-week-day h6{
-    color: white;
-}
+    .current-week-day h6 {
+        color: white;
+    }
 
-.text-danger{
+.text-danger {
     font-size: small !important;
 }
+
+.material-input {
+    border: none;
+    border-bottom: 1px solid white;
+    background-color: transparent;
+    width: 100%;
+    color: white;
+    padding: 10px 10px 10px 5px;
+}
+
+    .material-input::placeholder {
+        color: white;
+    }
+
+    .material-input:focus {
+        outline: none;
+    }

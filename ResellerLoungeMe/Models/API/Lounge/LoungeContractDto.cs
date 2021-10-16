@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ResellerLoungeMe.Models.API
+namespace ResellerLoungeMe.Models.API.Lounge
 {
     public class LoungeContractDto : BaseDto
     {
