@@ -35,16 +35,16 @@
             @foreach (var terminal in Model.Terminals)
             {
                 foreach (var lounge in terminal.Lounges)
-                {<a href="Lounge/Detail/@lounge.Id">
-                        <div class="col-lg-6 col-12 lounge-item" data-terminal="@terminal.Id">
+                {
+                        <div class="col-lg-6 col-12 lounge-item p-3" data-terminal="@terminal.Id">
                             <div class="card card-profile overflow-hidden">
                                 <div class="row">
                                     <div class="col-lg-4 col-md-6 col-12 pe-lg-0">
-
-                                        <div class="p-3 pe-md-0">
-                                            <img class="w-100 border-radius-md" src="@lounge.Images.FirstOrDefault().Url" alt="image">
-                                        </div>
-
+                                        <a href="/Lounge/Index/@lounge.Id">
+                                            <div class="p-3 pe-md-0">
+                                                <img class="w-100 border-radius-md" src="@(lounge.Images.Count != 0 ? lounge.Images.FirstOrDefault().Url : "#")" alt="@lounge.Name">
+                                            </div>
+                                        </a>
                                     </div>
                                     <div class="col-lg-8 col-md-6 col-12 ps-lg-0 my-auto">
                                         <div class="card-body">
@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                  
                 }
 
             }
