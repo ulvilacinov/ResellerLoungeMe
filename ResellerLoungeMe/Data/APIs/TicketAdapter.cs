@@ -38,5 +38,16 @@ namespace ResellerLoungeMe.Data.APIs
             }
             return result;
         }
+
+        public List<UserTicketDto> GetTickets()
+        {
+            List<UserTicketDto> result = new List<UserTicketDto>();
+            var response = client.GetAsync($"{BaseUrl}/reseller/tickets").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                result = JsonConvert.DeserializeObject<List<UserTicketDto>>(response.Content.ReadAsStringAsync().Result);
+            }
+            return result;
+        }
     }
 }

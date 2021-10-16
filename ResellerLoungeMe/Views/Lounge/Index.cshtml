@@ -1,4 +1,4 @@
-﻿@model ResellerLoungeMe.Models.API.LoungeDto
+﻿@model ResellerLoungeMe.Models.API.Lounge.LoungeDto
 @{
     var FeatureList = Model.Features.Where(w => w.Feature.Type == "EXTRA_FEATURE").ToList();
     var AmentiesList = Model.Features.Where(w => w.Feature.Type == "FEATURE").ToList();

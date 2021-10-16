@@ -14,7 +14,19 @@ namespace ResellerLoungeMe.Controllers
         TicketAdapter ticketAdapter = new TicketAdapter();
         public IActionResult Index()
         {
-            return View();
+            var list = ticketAdapter.GetTickets().Select(w=> new TicketDisplayViewModel
+            {
+                ChildAdult = w.ChildCount,
+                Created = w.Created,
+                Id = w.Id,
+                Lounge = w.Lounge.Name,
+                Pnr = w.Pnr,
+                Status = w.State,
+                UserEmail = w.User?.Email,
+                UserFullname = w.User?.Name+ " " + w.User?.Surname,
+                AdultCount = w.GuestEntrances.Count
+            }).ToList();
+            return View(list);
         }
 
         public IActionResult BuyTicket(TicketViewModel ticket)

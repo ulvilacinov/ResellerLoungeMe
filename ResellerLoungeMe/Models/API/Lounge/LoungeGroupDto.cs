@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ResellerLoungeMe.Models.API.Ticket
+namespace ResellerLoungeMe.Models.API.Lounge
 {
     public class LoungeGroupDto : NameDto
     {

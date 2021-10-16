@@ -1,4 +1,5 @@
-﻿using ResellerLoungeMe.Models.API.Reseller;
+﻿using ResellerLoungeMe.Models.API.Lounge;
+using ResellerLoungeMe.Models.API.Reseller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,5 @@ namespace ResellerLoungeMe.Models.API.User
         public int UserId { get; set; }
         //public UserMembershipDto UserMembership { get; set; }
         public int UserMembershipId { get; set; }
-
     }
 }
