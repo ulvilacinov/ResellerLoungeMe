@@ -32,7 +32,7 @@ namespace ResellerLoungeMe.Models.API
         public LoungeOfficeDto LoungeOfficeDto { get; set; }
         public int LoungeOfficeId { get; set; }
         public string Name { get; set; }
-        public LoungeOpenHourDto LoungeOpenHourDto { get; set; }
+        public ICollection<LoungeOpenHourDto> OpenHours { get; set; }
         public decimal OrderMultiplier { get; set; }
         public decimal OrderPoint { get; set; }
         public bool Passive { get; set; }

@@ -1,0 +1,117 @@
+﻿@model ResellerLoungeMe.Models.API.LoungeDto
+@{
+    var FeatureList = Model.Features.Where(w => w.Feature.Type == "EXTRA_FEATURE").ToList();
+    var AmentiesList = Model.Features.Where(w => w.Feature.Type == "FEATURE").ToList();
+
+}
+<header class="bg-gradient-dark">
+    <div class="page-header min-vh-35"
+         style="background-image: url('@(Model.Images.Count !=  0 ? Model.Images.First().Url : "/assets/img/nastuh.jpg" )'); background-position-y: 50%;">
+        <span class="mask bg-gradient-info opacity-8"></span>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center mx-auto my-auto">
+                    <h1 class="text-white">@Model.Name</h1>
+                    <p class="lead mb-4 text-white opacity-8">
+                        @Model.Terminal.Name | @Model.Terminal.Airport.Name |
+                        @Model.Terminal.Airport.City.Name
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="position-absolute w-100 z-index-1 bottom-0">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                 viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+                    </path>
+                </defs>
+                <g class="moving-waves">
+                    <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40"></use>
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)"></use>
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)"></use>
+                    <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)"></use>
+                    <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)"></use>
+                    <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255,255,255,1"></use>
+                </g>
+            </svg>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <section class="gallery p-5">
+        @foreach (var image in Model.Images)
+        {
+            <div class="gallery__item gallery__item--@image.OrderIndex">
+                <img src="@image.Url" alt="Gallery image @image.OrderIndex" class="gallery__img">
+            </div>
+        }
+    </section>
+    <section class="detail">
+        <div class="row">
+            <div class="col-8">
+                <div class="row card p-3 m-3">
+                    <h3 class="text-info text-gradient">Location</h3>
+                    <p>@Model.LocationDescription</p>
+                </div>
+                <div class="row card p-3 m-3">
+                    <h3 class="text-info text-gradient">Features</h3>
+                    <div>
+                        @foreach (var feature in FeatureList)
+                        {
+                            <span class="badge bg-gradient-info">@feature.Feature.Name</span>
+                        }
+                    </div>
+                </div>
+                <div class="row card p-3 m-3">
+                    <h3 class="text-info text-gradient">Amenties</h3>
+                    <div>
+                        @foreach (var feature in AmentiesList)
+                        {
+                            <span class="badge bg-gradient-secondary">@feature.Feature.Name</span>
+                        }
+                    </div>
+                </div>
+                <div class="row card p-3 m-3">
+                    <h3 class="text-info text-gradient">Lounge Policy</h3>
+                    <p><b>Free entry age: </b>Children under @Model.ChildPolicy years</p>
+                    <p><b>Lounge Usage Hour: </b>@Model.UsageHourLimit</p>
+                    @if (Model.ClosedSeasons.Count > 0)
+                    {
+                        <p><b>Reason of being closed: </b>@Model.ClosedSeasons.FirstOrDefault().Description</p>
+                        <p><b>Closed Date: </b>@Model.ClosedSeasons.FirstOrDefault().StartDate.ToString("dd/MM/yyyy")- @Model.ClosedSeasons.FirstOrDefault().EndDate.ToString("dd/MM/yyyy") </p>
+                    }
+
+
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row">
+                    <button class="btn btn-info">Buy Ticket <span>$ @Model.Price</span></button>
+                </div>
+                <div class="row card p-3 m-3">
+                    <h3 class="text-info text-gradient">Working Hours</h3>
+                    <div class="table-responsive">
+                        <table class="table align-items-center mb-0">
+                            <tbody>
+                                @foreach (var day in Model.OpenHours)
+                                {
+                                    <tr class="@(day.Day.ToLower() == DateTime.Now.DayOfWeek.ToString().ToLower() ? "current-week-day" : "")">
+                                        <td>
+                                            <h6>@day.Day</h6>
+                                        </td>
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">@day.BeginHour - @day.EndHour</p>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
