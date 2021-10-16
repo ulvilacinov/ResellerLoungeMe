@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ResellerLoungeMe.Data.APIs;
+using ResellerLoungeMe.Models.API;
 using System;
 using System.Collections.Generic;
 using System.Linq;

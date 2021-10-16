@@ -131,3 +131,7 @@ body {
 .current-week-day h6{
     color: white;
 }
+
+.text-danger{
+    font-size: small !important;
+}
