@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace ResellerLoungeMe.Models.API
 {
-    public class CityDto : NameDto
+    public class CountryDto : NameDto
     {
-        public CountryDto Country { get; set; }
-        public int CountryId { get; set; }        
+       // public ContinentDto Continent { get; set; }
+        public int ContinentId { get; set; }
     }
 }

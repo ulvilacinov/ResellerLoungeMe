@@ -4,6 +4,10 @@
     var AmentiesList = Model.Features.Where(w => w.Feature.Type == "FEATURE").ToList();
 
 }
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
 <header class="bg-gradient-dark">
     <div class="page-header min-vh-35"
          style="background-image: url('@(Model.Images.Count !=  0 ? Model.Images.First().Url : "/assets/img/nastuh.jpg" )'); background-position-y: 50%;">
@@ -87,7 +91,7 @@
             </div>
             <div class="col-4">
                 <div class="row">
-                    <button class="btn btn-info">Buy Ticket <span>$ @Model.Price</span></button>
+                    <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#buytTicketModal">Buy Ticket <span>$ @Model.Price</span></button>
                 </div>
                 <div class="row card p-3 m-3">
                     <h3 class="text-info text-gradient">Working Hours</h3>
@@ -114,4 +118,21 @@
         </div>
 
     </section>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="buytTicketModal" tabindex="-1" aria-labelledby="buyTicketModalLabel" aria-hidden="true">
+    @Html.RenderPartialAsync("_BuyTicketPartial", new TicketViewModel
+{
+    LoungeName = Model.Name,
+    AirportName = Model.Terminal.Airport.Name,
+    ChildPolicy = Model.ChildPolicy,
+    City = Model.Terminal.Airport.City.Name,
+    Country = Model.Terminal.Airport.City.Country.Name,
+    Direction = Model.Direction,
+    LoungeId = Model.Id,
+    Terminal = Model.Terminal.Name,
+    Price = Model.Price,
+})
 </div>
