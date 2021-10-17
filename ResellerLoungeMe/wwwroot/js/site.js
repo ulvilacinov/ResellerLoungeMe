@@ -1,5 +1,4 @@
 ﻿$(document).ready(function () {
-    //create AutoComplete UI component
     $("#Airports").kendoAutoComplete({
         dataSource: {
             type: "json",
@@ -22,7 +21,7 @@
     });
 
     $('#CountryCodes').select2({
-        data: countrCodes,
+        data: countryCodes,
         placeholder: "Select Country",
         allowClear: true
     });
@@ -37,11 +36,10 @@ $("#Terminals").on("change", function () {
     }
     $("#lounges").find(".lounge-item[data-terminal!='" + terminalID + "']").hide();
     $("#lounges").find(".lounge-item[data-terminal='" + terminalID + "']").show();
-
 });
 
 
-var countrCodes = [
+var countryCodes = [
     {
         "id": "+7 840",
         "text": "Abkhazia"

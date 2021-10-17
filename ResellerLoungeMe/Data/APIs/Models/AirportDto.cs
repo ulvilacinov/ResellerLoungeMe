@@ -15,7 +15,6 @@ namespace ResellerLoungeMe.Models.API
         public double Longitude { get; set; }
         public string UrlPostfix { get; set; }
         public ICollection<TerminalDto> Terminals { get; set; }
-        public ICollection<SelectListItem> SelectListTerminals { get; set; }
 
     }
 }

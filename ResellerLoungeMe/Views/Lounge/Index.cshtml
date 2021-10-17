@@ -1,10 +1,4 @@
-﻿@model ResellerLoungeMe.Models.API.Lounge.LoungeDto
-@{
-    var FeatureList = Model.Features.Where(w => w.Feature.Type == "EXTRA_FEATURE").ToList();
-    var AmentiesList = Model.Features.Where(w => w.Feature.Type == "FEATURE").ToList();
-
-}
-
+﻿@model ResellerLoungeMe.Models.LoungeViewModel
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }
@@ -17,8 +11,7 @@
                 <div class="col-lg-8 text-center mx-auto my-auto">
                     <h1 class="text-white">@Model.Name</h1>
                     <p class="lead mb-4 text-white opacity-8">
-                        @Model.Terminal.Name | @Model.Terminal.Airport.Name |
-                        @Model.Terminal.Airport.City.Name
+                        @Model.Terminal | @Model.Airport | @Model.City
                     </p>
                 </div>
             </div>
@@ -58,24 +51,31 @@
                     <h3 class="text-info text-gradient">Location</h3>
                     <p>@Model.LocationDescription</p>
                 </div>
-                <div class="row card p-3 m-3">
-                    <h3 class="text-info text-gradient">Features</h3>
-                    <div>
-                        @foreach (var feature in FeatureList)
-                        {
-                            <span class="badge bg-gradient-info">@feature.Feature.Name</span>
-                        }
+                @if (Model.Features.Count > 0)
+                {
+                    <div class="row card p-3 m-3">
+                        <h3 class="text-info text-gradient">Features</h3>
+                        <div>
+                            @foreach (var feature in Model.Features)
+                            {
+                                <span class="badge bg-gradient-info">@feature</span>
+                            }
+                        </div>
                     </div>
-                </div>
-                <div class="row card p-3 m-3">
-                    <h3 class="text-info text-gradient">Amenties</h3>
-                    <div>
-                        @foreach (var feature in AmentiesList)
-                        {
-                            <span class="badge bg-gradient-secondary">@feature.Feature.Name</span>
-                        }
+                }
+                @if (Model.Amenties.Count > 0)
+                {
+                    <div class="row card p-3 m-3">
+                        <h3 class="text-info text-gradient">Amenties</h3>
+                        <div>
+                            @foreach (var amenty in Model.Amenties)
+                            {
+                                <span class="badge bg-gradient-secondary">@amenty</span>
+                            }
+                        </div>
                     </div>
-                </div>
+                }
+
                 <div class="row card p-3 m-3">
                     <h3 class="text-info text-gradient">Lounge Policy</h3>
                     <p><b>Free entry age: </b>Children under @Model.ChildPolicy years</p>
@@ -120,19 +120,18 @@
     </section>
 </div>
 
-
 <!-- Modal -->
 <div class="modal fade" id="buytTicketModal" tabindex="-1" aria-labelledby="buyTicketModalLabel" aria-hidden="true">
     @Html.RenderPartialAsync("_BuyTicketPartial", new TicketViewModel
 {
     LoungeName = Model.Name,
-    AirportName = Model.Terminal.Airport.Name,
+    AirportName = Model.Airport,
     ChildPolicy = Model.ChildPolicy,
-    City = Model.Terminal.Airport.City.Name,
-    Country = Model.Terminal.Airport.City.Country.Name,
+    City = Model.City,
+    Country = Model.Country,
     Direction = Model.Direction,
     LoungeId = Model.Id,
-    Terminal = Model.Terminal.Name,
+    Terminal = Model.Terminal,
     Price = Model.Price,
 })
 </div>
