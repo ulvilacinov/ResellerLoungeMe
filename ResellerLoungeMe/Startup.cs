@@ -8,6 +8,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ResellerLoungeMe.Data;
+using ResellerLoungeMe.Data.APIs;
+using ResellerLoungeMe.Data.APIs.Adapters;
+using ResellerLoungeMe.Models;
+using ResellerLoungeMe.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +38,19 @@ namespace ResellerLoungeMe
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();
+
+            var loungeMeServerSettings = Configuration.GetSection("LoungeMeServerSettings");
+            services.Configure<LoungeMeServerSettings>(loungeMeServerSettings);
+            
+            services.AddScoped<IAirportAdapter, AirportAdapter>();
+            services.AddScoped<ILoungeAdapter, LoungeAdapter>();
+            services.AddScoped<ITicketAdapter, TicketAdapter>();
+
+            services.AddScoped<IAirportService, AirportService>();
+            services.AddScoped<ILoungeService, LoungeService>();
+            services.AddScoped<ITicketService, TicketService>();
+
+            services.AddMemoryCache();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

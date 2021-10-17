@@ -1,4 +1,4 @@
-﻿@model ResellerLoungeMe.Models.API.AirportDto
+﻿@model ResellerLoungeMe.Models.AirportViewModel
 
 <header class="bg-gradient-dark">
     <div class="page-header min-vh-75" style="background-image: url('/assets/img/nastuh.jpg'); background-position-y: 50%;">
@@ -7,7 +7,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center mx-auto my-auto">
                     <h1 class="text-white">@Model.Name</h1>
-                    <p class="lead mb-4 text-white opacity-8">@Model.City.Name</p>
+                    <p class="lead mb-4 text-white opacity-8">@Model.City</p>
                     @Html.DropDownList("Terminals", Model.SelectListTerminals, "All Terminal", new { @class = "form-control" })
                 </div>
             </div>
@@ -55,14 +55,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                  
+                        </div> 
                 }
-
             }
-
-
-
         </div>
     </div>
 </section>

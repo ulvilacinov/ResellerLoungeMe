@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using ResellerLoungeMe.Data.APIs;
 using ResellerLoungeMe.Models;
+using ResellerLoungeMe.Service;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,35 +14,29 @@ namespace ResellerLoungeMe.Controllers
 {
     public class AirportsController : Controller
     {
-        private readonly ILogger<AirportsController> _logger;
-        AirportAdapter airportAdapter = new AirportAdapter();
+        private readonly IAirportService _service;
 
-        public AirportsController(ILogger<AirportsController> logger)
+        public AirportsController(IAirportService service)
         {
-            _logger = logger;
+            _service = service;
         }
 
         public IActionResult Index()
         {
+            //_service.GetAndSetAirportsCache();
             return View();
         }
 
         public JsonResult GetAirports(string searchKey)
         {
-            var airports = airportAdapter.GetAirports(searchKey).Select(item => new SelectListItem
-            {
-                Text = $"{item.City.Name} | {item.Name}",
-                Value = item.Id.ToString()
-            }).ToList();
+            var airports = _service.GetAirports(searchKey);
 
             return Json(airports);
         }
 
-
-
         public IActionResult Lounges(int id)
         {
-            var airportDetail = airportAdapter.GetAirport(id);
+            var airportDetail = _service.GetAirport(id);
             if (airportDetail.Id == 0)
             {
                 return View("NotFound");

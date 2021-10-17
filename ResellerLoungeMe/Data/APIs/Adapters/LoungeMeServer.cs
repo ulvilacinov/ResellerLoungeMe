@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Microsoft.Extensions.Options;
+using Newtonsoft.Json.Linq;
 using ResellerLoungeMe.Models;
 using System;
 using System.IO;
@@ -13,7 +14,11 @@ namespace ResellerLoungeMe.Data.APIs
     public sealed class LoungeMeServer: HttpClient
     {
         private static readonly LoungeMeServer instance = new LoungeMeServer();
+        //private readonly LoungeMeServerSettings _settings;
         private LoungeMeServer() { }
+        //public LoungeMeServer(IOptions<LoungeMeServerSettings> options) {
+        //    _settings = options.Value;
+        //}
         public static LoungeMeServer Instance()
         {
             instance.DefaultRequestHeaders.Clear();
