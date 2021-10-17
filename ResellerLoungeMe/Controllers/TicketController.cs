@@ -1,9 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using QRCoder;
 using ResellerLoungeMe.Data.APIs;
 using ResellerLoungeMe.Models;
 using ResellerLoungeMe.Models.API;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,7 +20,7 @@ namespace ResellerLoungeMe.Controllers
         {
             var list = ticketAdapter.GetTickets().Select(w=> new TicketDisplayViewModel
             {
-                ChildAdult = w.ChildCount,
+                ChildCount = w.ChildCount,
                 Created = w.Created,
                 Id = w.Id,
                 Lounge = w.Lounge.Name,
@@ -51,7 +55,54 @@ namespace ResellerLoungeMe.Controllers
         public IActionResult Detail(int id)
         {
             var result = ticketAdapter.GetTicket(id);
-            return View(result);
+            var qrCode = GenerateQrCode(result.Pnr);
+
+            var viewModel = new TicketDetailViewModel()
+            {
+                AdultCount = result.GuestEntrances.Count,
+                Airport = result.Lounge?.Terminal?.Airport?.Name,
+                ChildCount = result.ChildCount,
+                City = result.Lounge?.Terminal?.Airport?.City.Name,
+                Country = result.Lounge?.Terminal?.Airport?.City?.Country?.Name,
+                Direction = result.Lounge?.Direction,
+                ExpirationDate = result.ExpirationDate,
+                Id = result.Id,
+                Lounge = result.Lounge?.Name,
+                Pnr = result.Pnr,
+                SoldPrice = result.SoldPrice,
+                Status = result.State,
+                Terminal = result.Lounge?.Terminal?.Name,
+                UserEmail = result.User?.Email,
+                UserFullname = result.User?.Name + " " + result.User?.Surname,
+                QrCode = qrCode
+            };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public JsonResult Cancel(int id)
+        {
+            var result = ticketAdapter.CancelTicket(id);
+            return Json(result);
+        }
+
+        [HttpPost]
+        public JsonResult SendPass(int id,ShareTicket ticket)
+        {
+            var result = ticketAdapter.ShareTicket(id, ticket);
+            return Json(result);
+        }
+
+        private string GenerateQrCode(string pnr)
+        {
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(pnr, QRCodeGenerator.ECCLevel.Q);
+            QRCode qrCode = new QRCode(qrCodeData);
+            Bitmap qrCodeImage = qrCode.GetGraphic(20);
+            System.IO.MemoryStream ms = new MemoryStream();
+            qrCodeImage.Save(ms, ImageFormat.Png);
+            byte[] byteImage = ms.ToArray();
+            return Convert.ToBase64String(byteImage);
         }
     }
 }
