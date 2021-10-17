@@ -49,5 +49,29 @@ namespace ResellerLoungeMe.Data.APIs
             }
             return result;
         }
+
+        public  bool CancelTicket(int id)
+        {
+            var response = client.PutAsync($"{BaseUrl}/reseller/tickets/{id}/cancel", 
+                new StringContent(JsonConvert.SerializeObject("{'cancellationReason':'TRAVEL_CANCELLED'}"), Encoding.UTF8,
+                "application/json")).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool ShareTicket(int id, ShareTicket ticket)
+        {
+            var response = client.PostAsync($"{BaseUrl}/reseller/tickets/{id}/share",
+             new StringContent(JsonConvert.SerializeObject(ticket), Encoding.UTF8,
+             "application/json")).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

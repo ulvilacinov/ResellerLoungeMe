@@ -122,22 +122,27 @@ body {
 
 .gallery__item--0 {
     grid-area: 1 / 1 / 3 / 3;
+    height: 50vh;
 }
 
 .gallery__item--1 {
     grid-area: 1 / 3 / 2 / 4;
+    height: 25vh;
 }
 
 .gallery__item--2 {
     grid-area: 1 / 4 / 2 / 5;
+    height: 25vh;
 }
 
 .gallery__item--3 {
     grid-area: 2 / 3 / 3 / 4;
+    height: 25vh;
 }
 
 .gallery__item--4 {
     grid-area: 2 / 4 / 3 / 5;
+    height: 25vh;
 }
 
 
@@ -170,3 +175,8 @@ body {
     .material-input:focus {
         outline: none;
     }
+
+
+.navbar.navbar-transparent .nav-link:hover, .navbar.navbar-transparent .nav-link:focus {
+    border-bottom: 2px solid white;
+}
