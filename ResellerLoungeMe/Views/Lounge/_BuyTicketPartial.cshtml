@@ -1,5 +1,5 @@
 ﻿@model ResellerLoungeMe.Models.TicketViewModel
-
+    <script src="~/js/TicketPartial.js"></script>
 <div class="modal-dialog modal-xl">
     <div class="modal-content">
         <div class="modal-header">
@@ -40,9 +40,7 @@
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <label>Country</label>
-                                    <select asp-for="PhonePrefix" class="form-control selectpicker" data-live-search="true" id="CountryCodes" style="width:100%">
-                                        <option value="0">Select</option>
-                                        <option value="994">Azerbaijan</option>
+                                    <select asp-for="PhonePrefix" class="form-control" data-live-search="true" id="CountryCodes" style="width:100%">
                                     </select>
                                     <span asp-validation-for="PhonePrefix" class="text-danger"></span>
                                 </div>
