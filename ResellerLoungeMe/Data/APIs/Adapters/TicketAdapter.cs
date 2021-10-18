@@ -42,10 +42,12 @@ namespace ResellerLoungeMe.Data.APIs
         {
             UserTicketDto result = new UserTicketDto();
             var response = client.GetAsync($"{_settings.BaseUrl}/reseller/tickets/{id}").Result;
+
             if (response.IsSuccessStatusCode)
             {
                 result = JsonConvert.DeserializeObject<UserTicketDto>(response.Content.ReadAsStringAsync().Result);
             }
+
             return result;
         }
 
@@ -53,10 +55,12 @@ namespace ResellerLoungeMe.Data.APIs
         {
             List<UserTicketDto> result = new List<UserTicketDto>();
             var response = client.GetAsync($"{_settings.BaseUrl}/reseller/tickets").Result;
+
             if (response.IsSuccessStatusCode)
             {
                 result = JsonConvert.DeserializeObject<List<UserTicketDto>>(response.Content.ReadAsStringAsync().Result);
             }
+
             return result;
         }
 
@@ -65,10 +69,12 @@ namespace ResellerLoungeMe.Data.APIs
             var response = client.PutAsync($"{_settings.BaseUrl}/reseller/tickets/{id}/cancel", 
                 new StringContent(JsonConvert.SerializeObject("{'cancellationReason':'TRAVEL_CANCELLED'}"), Encoding.UTF8,
                 "application/json")).Result;
+
             if (response.IsSuccessStatusCode)
             {
                 return true;
             }
+
             return false;
         }
 
@@ -77,10 +83,12 @@ namespace ResellerLoungeMe.Data.APIs
             var response = client.PostAsync($"{_settings.BaseUrl}/reseller/tickets/{id}/share",
              new StringContent(JsonConvert.SerializeObject(ticket), Encoding.UTF8,
              "application/json")).Result;
+
             if (response.IsSuccessStatusCode)
             {
                 return true;
             }
+
             return false;
         }
     }

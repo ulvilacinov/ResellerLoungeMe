@@ -20,6 +20,7 @@ namespace ResellerLoungeMe.Service
         public bool CancelTicket(int id)
         {
             var result = _ticketAdapter.CancelTicket(id);
+
             return result;
         }
 
@@ -92,6 +93,7 @@ namespace ResellerLoungeMe.Service
         public bool ShareTicket(int id, ShareTicket ticket)
         {
             var result = _ticketAdapter.ShareTicket(id, ticket);
+
             return result;
         }
     }

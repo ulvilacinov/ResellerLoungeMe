@@ -12,18 +12,19 @@ namespace ResellerLoungeMe.Service
     public class AirportService : IAirportService
     {
         private readonly IAirportAdapter _airportAdapter;
-        private readonly IMemoryCache _cache;
 
-
-        public AirportService(IAirportAdapter airportAdapter,IMemoryCache cache)
+        public AirportService(IAirportAdapter airportAdapter)
         {
             _airportAdapter = airportAdapter;
-            _cache = cache;
         }
 
         public AirportViewModel GetAirport(int id)
         {
             var data = _airportAdapter.GetAirport(id);
+            if (data == null)
+            {
+                return null;
+            }
             AirportViewModel result = new AirportViewModel
             {
                 City = data.City?.Name,
@@ -45,7 +46,6 @@ namespace ResellerLoungeMe.Service
             };
 
             return result;
-
         }
 
         public List<SelectListItem> GetAirports(string searchKey)
@@ -55,23 +55,9 @@ namespace ResellerLoungeMe.Service
                 Text = $"{item.City.Name} | {item.Name}",
                 Value = item.Id.ToString()
             }).ToList();
+
             return airportSelectList;
         }
 
-        public void GetAndSetAirportsCache()
-        {
-            List<SelectListItem> airportSelectList = new List<SelectListItem>();
-
-            if (!_cache.TryGetValue("Airports", out airportSelectList))
-            {
-                airportSelectList = _airportAdapter.GetAirports("").Select(item => new SelectListItem
-                {
-                    Text = $"{item.City.Name} | {item.Name}",
-                    Value = item.Id.ToString()
-                }).ToList();
-
-                _cache.Set("Airports", airportSelectList, TimeSpan.FromDays(1));
-            }
-        }
     }
 }

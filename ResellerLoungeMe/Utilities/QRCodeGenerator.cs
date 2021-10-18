@@ -20,6 +20,7 @@ namespace ResellerLoungeMe.Utilities
             System.IO.MemoryStream ms = new MemoryStream();
             qrCodeImage.Save(ms, ImageFormat.Png);
             byte[] byteImage = ms.ToArray();
+
             return Convert.ToBase64String(byteImage);
         }
     }

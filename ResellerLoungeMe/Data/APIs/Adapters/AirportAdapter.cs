@@ -16,6 +16,7 @@ namespace ResellerLoungeMe.Data.APIs
     {
         LoungeMeServer client = LoungeMeServer.Instance();
         private readonly LoungeMeServerSettings _settings;
+
         public AirportAdapter(IOptions<LoungeMeServerSettings> settings)
         {
             _settings = settings.Value;
@@ -25,6 +26,7 @@ namespace ResellerLoungeMe.Data.APIs
         {
             List<AirportDto> result = new List<AirportDto>();
             var response = client.GetAsync($"{_settings.BaseUrl}/reseller/search?searchKey={searchKey}").Result;
+            
             if (response.IsSuccessStatusCode)
             {
                 result = JsonConvert.DeserializeObject<List<AirportDto>>(response.Content.ReadAsStringAsync().Result);
@@ -37,10 +39,12 @@ namespace ResellerLoungeMe.Data.APIs
         {
             AirportDto result = new AirportDto();
             var response = client.GetAsync($"{_settings.BaseUrl}/reseller/airports/{id}").Result;
+            
             if (response.IsSuccessStatusCode)
             {
                 result = JsonConvert.DeserializeObject<AirportDto>(response.Content.ReadAsStringAsync().Result);
             }
+
             return result;
         }
     }
