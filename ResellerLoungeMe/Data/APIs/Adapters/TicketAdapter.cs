@@ -67,8 +67,7 @@ namespace ResellerLoungeMe.Data.APIs
         public  bool CancelTicket(int id)
         {
             var response = client.PutAsync($"{_settings.BaseUrl}/reseller/tickets/{id}/cancel", 
-                new StringContent(JsonConvert.SerializeObject("{'cancellationReason':'TRAVEL_CANCELLED'}"), Encoding.UTF8,
-                "application/json")).Result;
+                new StringContent("{\"cancellationReason\":\"TRAVEL_CANCELLED\"}", Encoding.UTF8, "application/json")).Result;
 
             if (response.IsSuccessStatusCode)
             {
