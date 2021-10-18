@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "jl5VgzNtO9IHMuok3yO7SbLHdzE5oEVL0xcAhDpfuqPX3TgoMnFuG+prLG4Y8ohQsARCzzrQ//FLHqUMJ2nYTw==",
+  "dgSpecHash": "IIlvtAmZ8gdxrdKyDsw99OwE31WymVeBFFF9ff4jOCL0n4C+Yj6kjXtsyB2t+0MlzVdJgWy+5RxwoWf/6zKAyw==",
   "success": true,
   "projectFilePath": "E:\\ulvi\\ResellerLoungeMe\\ResellerLoungeMe\\ResellerLoungeMe.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\90505\\.nuget\\packages\\bootstrap\\3.0.0\\bootstrap.3.0.0.nupkg.sha512",
+    "C:\\Users\\90505\\.nuget\\packages\\bootstrap-select\\1.13.18\\bootstrap-select.1.13.18.nupkg.sha512",
+    "C:\\Users\\90505\\.nuget\\packages\\jquery\\1.9.1\\jquery.1.9.1.nupkg.sha512",
     "C:\\Users\\90505\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\90505\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
     "C:\\Users\\90505\\.nuget\\packages\\microsoft.aspnetcore.authorization\\2.2.0\\microsoft.aspnetcore.authorization.2.2.0.nupkg.sha512",

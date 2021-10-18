@@ -15,6 +15,7 @@ namespace ResellerLoungeMe.Service
         {
             _loungeAdapter = loungeAdapter;
         }
+
         public LoungeViewModel GetLounge(int id)
         {
             var data = _loungeAdapter.GetLounge(id);

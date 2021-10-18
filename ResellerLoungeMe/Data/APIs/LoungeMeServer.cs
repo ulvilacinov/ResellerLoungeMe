@@ -14,11 +14,8 @@ namespace ResellerLoungeMe.Data.APIs
     public sealed class LoungeMeServer: HttpClient
     {
         private static readonly LoungeMeServer instance = new LoungeMeServer();
-        //private readonly LoungeMeServerSettings _settings;
         private LoungeMeServer() { }
-        //public LoungeMeServer(IOptions<LoungeMeServerSettings> options) {
-        //    _settings = options.Value;
-        //}
+     
         public static LoungeMeServer Instance()
         {
             instance.DefaultRequestHeaders.Clear();
@@ -37,6 +34,7 @@ namespace ResellerLoungeMe.Data.APIs
             }
             return token;
         }
+
         static string GetToken()
         {
             using (var httpClient = new HttpClient())
@@ -53,6 +51,7 @@ namespace ResellerLoungeMe.Data.APIs
 
                 tokenCreatedDate = DateTime.Now;
                 JObject jObj = JObject.Parse(result);
+
                 return jObj["authToken"].ToString();
             }
            

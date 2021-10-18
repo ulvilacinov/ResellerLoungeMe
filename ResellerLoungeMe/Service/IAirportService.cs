@@ -11,6 +11,5 @@ namespace ResellerLoungeMe.Service
     {
         List<SelectListItem> GetAirports(string searchKey);
         AirportViewModel GetAirport(int id);
-        void GetAndSetAirportsCache();
     }
 }

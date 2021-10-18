@@ -17,6 +17,7 @@ namespace ResellerLoungeMe.Controllers
         {
             _service = service;
         }
+
         public IActionResult Index(int id)
         {
             var result = _service.GetLounge(id);

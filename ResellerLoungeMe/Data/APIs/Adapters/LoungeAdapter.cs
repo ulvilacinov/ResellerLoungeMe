@@ -15,6 +15,7 @@ namespace ResellerLoungeMe.Data.APIs
     {
         LoungeMeServer client = LoungeMeServer.Instance();
         private readonly LoungeMeServerSettings _settings;
+
         public LoungeAdapter(IOptions<LoungeMeServerSettings> settings)
         {
             _settings = settings.Value;
@@ -24,10 +25,12 @@ namespace ResellerLoungeMe.Data.APIs
         {
             LoungeDto result = new LoungeDto();
             var response = client.GetAsync($"{_settings.BaseUrl}/reseller/lounges/{id}").Result;
+
             if (response.IsSuccessStatusCode)
             {
                 result = JsonConvert.DeserializeObject<LoungeDto>(response.Content.ReadAsStringAsync().Result);
             }
+
             return result;
         }
     }

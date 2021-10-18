@@ -116,22 +116,19 @@
                 </div>
             </div>
         </div>
-
     </section>
 </div>
 
 <!-- Modal -->
 <div class="modal fade" id="buytTicketModal" tabindex="-1" aria-labelledby="buyTicketModalLabel" aria-hidden="true">
-    @Html.RenderPartialAsync("_BuyTicketPartial", new TicketViewModel
-{
-    LoungeName = Model.Name,
-    AirportName = Model.Airport,
-    ChildPolicy = Model.ChildPolicy,
-    City = Model.City,
-    Country = Model.Country,
-    Direction = Model.Direction,
-    LoungeId = Model.Id,
-    Terminal = Model.Terminal,
-    Price = Model.Price,
-})
+    <partial name="_BuyTicketPartial" model="new TicketViewModel { 
+                                                    LoungeName = Model.Name,
+                                                    AirportName = Model.Airport,
+                                                    ChildPolicy = Model.ChildPolicy,
+                                                    City = Model.City,
+                                                    Country = Model.Country,
+                                                    Direction = Model.Direction,
+                                                    LoungeId = Model.Id,
+                                                    Terminal = Model.Terminal,
+                                                    Price = Model.Price,}" />
 </div>

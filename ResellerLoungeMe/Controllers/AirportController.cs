@@ -12,18 +12,17 @@ using System.Threading.Tasks;
 
 namespace ResellerLoungeMe.Controllers
 {
-    public class AirportsController : Controller
+    public class AirportController : Controller
     {
         private readonly IAirportService _service;
 
-        public AirportsController(IAirportService service)
+        public AirportController(IAirportService service)
         {
             _service = service;
         }
 
         public IActionResult Index()
         {
-            //_service.GetAndSetAirportsCache();
             return View();
         }
 
@@ -37,7 +36,7 @@ namespace ResellerLoungeMe.Controllers
         public IActionResult Lounges(int id)
         {
             var airportDetail = _service.GetAirport(id);
-            if (airportDetail.Id == 0)
+            if (airportDetail == null)
             {
                 return View("NotFound");
             }
@@ -48,6 +47,11 @@ namespace ResellerLoungeMe.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public ActionResult Test()
+        {
+            return View("NotFound");
         }
     }
 }
