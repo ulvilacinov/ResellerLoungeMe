@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\assets\" />
+    <Folder Include="wwwroot\lib\bootstrap-select\" />
     <Folder Include="wwwroot\lib\sweetalert2\css\" />
   </ItemGroup>
 

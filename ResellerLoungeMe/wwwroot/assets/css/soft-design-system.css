@@ -2948,7 +2948,7 @@ textarea.form-control-lg {
     border-left: 0.3em solid transparent; }
   .dropdown-toggle:empty::after {
     margin-left: 0; }
-
+/*
 .dropdown-menu {
   position: absolute;
   z-index: 1000;
@@ -3528,7 +3528,7 @@ textarea.form-control-lg {
     flex-basis: auto; }
   .navbar-expand .navbar-toggler {
     display: none; }
-
+    */
 .navbar-light .navbar-brand {
   color: rgba(52, 71, 103, 0.9); }
   .navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
@@ -12303,7 +12303,7 @@ textarea.form-control-lg {
   .card.card-background .card-description {
     margin-top: 24px;
     margin-bottom: 24px; }
-
+/*
 @media (min-width: 992px) {
   .dropdown .dropdown-menu,
   .dropup .dropdown-menu,
@@ -12501,7 +12501,7 @@ textarea.form-control-lg {
     font-size: 22px;
     color: #fff;
     transition: bottom 0.35s ease; }
-
+      */
 .page-header {
   padding: 0;
   position: relative;
@@ -13231,7 +13231,7 @@ hr.horizontal {
     flex-basis: auto; }
   .g-sidenav-show .navbar:not(.sidenav).navbar-main .navbar-nav {
     flex-direction: row; } }
-
+/*
 @media (max-width: 767.98px) {
   .navbar-collapse {
     position: relative; }
@@ -13268,7 +13268,7 @@ hr.horizontal {
     border: none; }
     .navbar-vertical .navbar-nav .nav-link .dropdown-menu .dropdown-menu {
       margin-left: 0.5rem; }
-
+    */
 .navbar-vertical .navbar-nav .nav-sm .nav-link {
   font-size: 0.8125rem; }
 

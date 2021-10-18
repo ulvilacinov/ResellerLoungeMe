@@ -180,3 +180,17 @@ body {
 .navbar.navbar-transparent .nav-link:hover, .navbar.navbar-transparent .nav-link:focus {
     border-bottom: 2px solid white;
 }
+
+.btn-selectpicker {
+    border: 1px solid #d2d6da !important;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.4rem;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: 0.5rem;
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+    box-shadow: none;
+}
