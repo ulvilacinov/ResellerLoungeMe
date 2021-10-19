@@ -1,4 +1,7 @@
 ﻿@model ResellerLoungeMe.Models.LoungeViewModel
+@{
+    ViewData["Title"] = Model.Name;
+}
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }
@@ -121,7 +124,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="buytTicketModal" tabindex="-1" aria-labelledby="buyTicketModalLabel" aria-hidden="true">
-    <partial name="_BuyTicketPartial" model="new TicketViewModel { 
+    <partial name="_BuyTicketPartial" model="new TicketViewModel {
                                                     LoungeName = Model.Name,
                                                     AirportName = Model.Airport,
                                                     ChildPolicy = Model.ChildPolicy,

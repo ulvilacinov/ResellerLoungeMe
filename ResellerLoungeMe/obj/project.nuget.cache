@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "IIlvtAmZ8gdxrdKyDsw99OwE31WymVeBFFF9ff4jOCL0n4C+Yj6kjXtsyB2t+0MlzVdJgWy+5RxwoWf/6zKAyw==",
+  "dgSpecHash": "VSKnVal8nh+tIqNR7otMRDgn03Gffd+P39aMZCE7eQ4OVYiabyvNfTyu/BC6fGnZOhNWK1OJJMgZQCCnhrXorA==",
   "success": true,
   "projectFilePath": "E:\\ulvi\\ResellerLoungeMe\\ResellerLoungeMe\\ResellerLoungeMe.csproj",
   "expectedPackageFiles": [
@@ -73,9 +73,11 @@
     "C:\\Users\\90505\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\90505\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\90505\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\90505\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512",
     "C:\\Users\\90505\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\90505\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\90505\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\90505\\.nuget\\packages\\qrcoder\\1.4.1\\qrcoder.1.4.1.nupkg.sha512",
     "C:\\Users\\90505\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\90505\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\90505\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
