@@ -5,8 +5,8 @@ trigger:
 variables:
   buildConfiguration: 'Release'
   location: 'Germany West Central'
-  acrHostName: 'cswebappdocker004acr.azurecr.io'
-  acrName: 'cswebappdocker004acr'
+  acrHostName: 'loungeme.germanywestcentral.azurecontainer.io'
+  acrName: 'reseller-lounge-me'
   rgName: 'ResellerLoungeMe'
   imageName: 'resellerloungemedocker'
   webAppName: 'resellerloungemeapp'
