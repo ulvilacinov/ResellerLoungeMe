@@ -24,6 +24,12 @@ function Cancel() {
                         "success"
                     );
                     $(".buttons-row").html('<div class="alert alert-danger text-white font-weight-bold" role="alert">This ticket is cancelled!</div >');
+                } else {
+                    Swal.fire(
+                        "Error",
+                        "Something went wrong",
+                        "error"
+                    );
                 }
             });
         }
@@ -69,7 +75,7 @@ function SendPass() {
                             "Error",
                             "Something went wrong",
                             "error"
-                        )
+                        );
                     }
                 });
             }

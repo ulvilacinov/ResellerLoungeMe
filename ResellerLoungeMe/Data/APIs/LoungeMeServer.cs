@@ -1,9 +1,6 @@
-﻿using Microsoft.Extensions.Options;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using ResellerLoungeMe.Models;
 using System;
-using System.IO;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -11,13 +8,16 @@ using System.Text.Json;
 
 namespace ResellerLoungeMe.Data.APIs
 {
-    public sealed class LoungeMeServer: HttpClient
+    public sealed class LoungeMeServer : HttpClient
     {
         private static readonly LoungeMeServer instance = new LoungeMeServer();
+        private static LoungeMeServerSettings _settings;
+
         private LoungeMeServer() { }
-     
-        public static LoungeMeServer Instance()
+
+        public static LoungeMeServer Instance(LoungeMeServerSettings settings)
         {
+            _settings = settings;
             instance.DefaultRequestHeaders.Clear();
             instance.DefaultRequestHeaders.Add("x-loungeme-auth-token", CreateToken());
             instance.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -43,9 +43,9 @@ namespace ResellerLoungeMe.Data.APIs
                 request.Method = HttpMethod.Post;
                 request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 request.Content = new StringContent(
-                       System.Text.Json.JsonSerializer.Serialize(new LoginModel { email= "test@agency.com", password= "lounge123Me321" }, typeof(object), new JsonSerializerOptions()),
+                       JsonSerializer.Serialize(new LoginModel { email = _settings.Email, password = _settings.Password }, typeof(object), new JsonSerializerOptions()),
                        Encoding.UTF8, "application/json");
-                request.RequestUri = new Uri("https://api.slowfoodtime.com/reseller/login");
+                request.RequestUri = new Uri($"{_settings.BaseUrl}/login");
                 var response = httpClient.SendAsync(request).Result;
                 var result = response.Content.ReadAsStringAsync().Result;
 
@@ -54,7 +54,7 @@ namespace ResellerLoungeMe.Data.APIs
 
                 return jObj["authToken"].ToString();
             }
-           
+
         }
     }
 }
