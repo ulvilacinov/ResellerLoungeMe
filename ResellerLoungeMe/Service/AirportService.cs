@@ -30,7 +30,7 @@ namespace ResellerLoungeMe.Service
                 City = data.City?.Name,
                 Name = data.Name,
                 Id = data.Id,
-                SelectListTerminals = data.Terminals?.Select(t => new SelectListItem { Text = t.Name, Value = t.Id.ToString() }).ToList(),
+                SelectListTerminals = data.Terminals?.Select(t => new SelectListItem { Text = t.Name, Value = t.Id.ToString() }).ToArray(),
                 Terminals = data.Terminals.Select(t => new TerminalViewModel
                 {
                     Id = t.Id,
@@ -40,9 +40,9 @@ namespace ResellerLoungeMe.Service
                         Id = l.Id,
                         Name = l.Name,
                         Price = l.Price,
-                        Images = l.Images.Select(i => new ImageViewModel { Url = i.Url, OrderIndex = i.OrderIndex }).ToList()
-                    }).ToList()
-                }).ToList()
+                        Images = l.Images.Select(i => new ImageViewModel { Url = i.Url, OrderIndex = i.OrderIndex }).ToArray()
+                    }).ToArray()
+                }).ToArray()
             };
 
             return result;

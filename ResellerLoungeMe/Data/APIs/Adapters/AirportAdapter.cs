@@ -5,6 +5,8 @@ using Newtonsoft.Json.Linq;
 using ResellerLoungeMe.Data.APIs.Adapters;
 using ResellerLoungeMe.Models;
 using ResellerLoungeMe.Models.API;
+using ResellerLoungeMe.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -16,34 +18,37 @@ namespace ResellerLoungeMe.Data.APIs
     {
         LoungeMeServer client = LoungeMeServer.Instance();
         private readonly LoungeMeServerSettings _settings;
-
-        public AirportAdapter(IOptions<LoungeMeServerSettings> settings)
+        private readonly IActionInvoker _actionInvoker;
+        public AirportAdapter(IOptions<LoungeMeServerSettings> settings, IActionInvoker actionInvoker)
         {
             _settings = settings.Value;
+            _actionInvoker = actionInvoker;
         }
 
         public List<AirportDto> GetAirports(string searchKey)
         {
             List<AirportDto> result = new List<AirportDto>();
-            var response = client.GetAsync($"{_settings.BaseUrl}/reseller/search?searchKey={searchKey}").Result;
-            
-            if (response.IsSuccessStatusCode)
-            {
-                result = JsonConvert.DeserializeObject<List<AirportDto>>(response.Content.ReadAsStringAsync().Result);
-            }
 
+            var response = _actionInvoker.Invoke(() =>
+            {
+                return client.GetAsync($"{_settings.BaseUrl}/reseller/search?searchKey={searchKey}").Result;
+            });
+
+            result = JsonConvert.DeserializeObject<List<AirportDto>>(response.Content.ReadAsStringAsync().Result);
+            
             return result;
         }
 
         public AirportDto GetAirport(int id)
         {
             AirportDto result = new AirportDto();
-            var response = client.GetAsync($"{_settings.BaseUrl}/reseller/airports/{id}").Result;
-            
-            if (response.IsSuccessStatusCode)
+
+            var response = _actionInvoker.Invoke(() =>
             {
-                result = JsonConvert.DeserializeObject<AirportDto>(response.Content.ReadAsStringAsync().Result);
-            }
+                return client.GetAsync($"{_settings.BaseUrl}/reseller/airports/{id}").Result;
+            });
+
+            result = JsonConvert.DeserializeObject<AirportDto>(response.Content.ReadAsStringAsync().Result);
 
             return result;
         }
