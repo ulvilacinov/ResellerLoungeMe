@@ -16,7 +16,7 @@ namespace ResellerLoungeMe.Data.APIs
 {
     public class TicketAdapter : ITicketAdapter
     {
-        LoungeMeServer client = LoungeMeServer.Instance();
+        private readonly LoungeMeServer _client;
         private readonly LoungeMeServerSettings _settings;
         private readonly IActionInvoker _actionInvoker;
 
@@ -24,6 +24,7 @@ namespace ResellerLoungeMe.Data.APIs
         {
             _settings = settings.Value;
             _actionInvoker = actionInvoker;
+            _client = LoungeMeServer.Instance(_settings);
         }
 
         public UserTicketDto CreateTicket(TicketDto ticket)
@@ -31,7 +32,7 @@ namespace ResellerLoungeMe.Data.APIs
             UserTicketDto result = new UserTicketDto();
             var response = _actionInvoker.Invoke(() =>
            {
-               return client.PostAsync($"{_settings.BaseUrl}/reseller/tickets",
+               return _client.PostAsync($"{_settings.BaseUrl}/tickets",
                  new StringContent(JsonConvert.SerializeObject(ticket), Encoding.UTF8,
                  "application/json")).Result;
            });
@@ -46,7 +47,7 @@ namespace ResellerLoungeMe.Data.APIs
             UserTicketDto result = new UserTicketDto();
             var response = _actionInvoker.Invoke(() =>
            {
-               return client.GetAsync($"{_settings.BaseUrl}/reseller/tickets/{id}").Result;
+               return _client.GetAsync($"{_settings.BaseUrl}/tickets/{id}").Result;
            });
 
             result = JsonConvert.DeserializeObject<UserTicketDto>(response.Content.ReadAsStringAsync().Result);
@@ -59,7 +60,7 @@ namespace ResellerLoungeMe.Data.APIs
             List<UserTicketDto> result = new List<UserTicketDto>();
             var response = _actionInvoker.Invoke(() =>
             {
-                return client.GetAsync($"{_settings.BaseUrl}/reseller/tickets").Result;
+                return _client.GetAsync($"{_settings.BaseUrl}/tickets").Result;
             });
 
             result = JsonConvert.DeserializeObject<List<UserTicketDto>>(response.Content.ReadAsStringAsync().Result);
@@ -69,7 +70,7 @@ namespace ResellerLoungeMe.Data.APIs
 
         public bool CancelTicket(int id)
         {
-            var response = client.PutAsync($"{_settings.BaseUrl}/reseller/tickets/{id}/cancel",
+            var response = _client.PutAsync($"{_settings.BaseUrl}/tickets/{id}/cancel",
                 new StringContent("{\"cancellationReason\":\"TRAVEL_CANCELLED\"}", Encoding.UTF8, "application/json")).Result;
 
             if (response.IsSuccessStatusCode)
@@ -82,7 +83,7 @@ namespace ResellerLoungeMe.Data.APIs
 
         public bool ShareTicket(int id, ShareTicket ticket)
         {
-            var response = client.PostAsync($"{_settings.BaseUrl}/reseller/tickets/{id}/share",
+            var response = _client.PostAsync($"{_settings.BaseUrl}/tickets/{id}/share",
              new StringContent(JsonConvert.SerializeObject(ticket), Encoding.UTF8,
              "application/json")).Result;
 

@@ -14,13 +14,15 @@ namespace ResellerLoungeMe.Data.APIs
 
     public class LoungeAdapter : ILoungeAdapter
     {
-        LoungeMeServer client = LoungeMeServer.Instance();
+        private readonly LoungeMeServer _client;
         private readonly LoungeMeServerSettings _settings;
         private readonly IActionInvoker _actionInvoker;
+
         public LoungeAdapter(IOptions<LoungeMeServerSettings> settings, IActionInvoker actionInvoker)
         {
             _settings = settings.Value;
             _actionInvoker = actionInvoker;
+            _client = LoungeMeServer.Instance(_settings);
         }
 
         public LoungeDto GetLounge(int id)
@@ -28,7 +30,7 @@ namespace ResellerLoungeMe.Data.APIs
             LoungeDto result = new LoungeDto();
             var response = _actionInvoker.Invoke(() =>
             {
-                return client.GetAsync($"{_settings.BaseUrl}/reseller/lounges/{id}").Result;
+                return _client.GetAsync($"{_settings.BaseUrl}/lounges/{id}").Result;
             });
 
             result = JsonConvert.DeserializeObject<LoungeDto>(response.Content.ReadAsStringAsync().Result);
