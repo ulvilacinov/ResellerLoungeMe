@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResellerLoungeMe.Web", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResellerLoungeMe.Application.Test", "test\ResellerLoungeMe.Application.Test\ResellerLoungeMe.Application.Test.csproj", "{B7BB5DC0-2D5D-4924-AB1A-9523B8B0AC60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResellerLoungeMe.Web.Test", "ResellerLoungeMe.Web.Test\ResellerLoungeMe.Web.Test.csproj", "{BC3811BC-6308-4444-9E4A-756998CD66A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResellerLoungeMe.Web.Test", "test\ResellerLoungeMe.Web.Test\ResellerLoungeMe.Web.Test.csproj", "{BC3811BC-6308-4444-9E4A-756998CD66A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
