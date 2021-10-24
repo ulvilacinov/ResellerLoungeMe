@@ -1,0 +1,96 @@
+﻿@model List<ResellerLoungeMe.Application.Models.Ticket.TicketDisplayModel>
+@{
+    ViewData["Title"] = "Activities";
+}
+<header class="bg-gradient-dark">
+    <div class="page-header min-vh-50" style="        background-image: url('/assets/img/office-dark.jpg');
+        background-position-y: 50%;">
+        <span class="mask bg-gradient-info opacity-8"></span>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center mx-auto my-auto">
+                    <h1 class="text-white">Activities</h1>
+                    <div class="group">
+                        <input type="text" onkeypress="FilterGrid(this.value)" name="FindTicket" placeholder="Find a ticket with PNR number" class="material-input" value="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="position-absolute w-100 z-index-1 bottom-0">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+                </defs>
+                <g class="moving-waves">
+                    <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40"></use>
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)"></use>
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)"></use>
+                    <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)"></use>
+                    <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)"></use>
+                    <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255,255,255,1"></use>
+                </g>
+            </svg>
+        </div>
+    </div>
+</header>
+<div class="m-5">
+    <div id="grid"></div>
+</div>
+
+
+<script>
+    var ticketList = @Html.Raw(Json.Serialize(Model));
+    var gridTickets;
+        $(document).ready(function() {
+            gridTickets = $("#grid").kendoGrid({
+                dataSource: {
+                    data: ticketList,
+                    schema: {
+                        model: {
+                            fields: {
+                                id: {type: "number"},
+                                created: { type: "date" },
+                                userFullname: { type: "string" },
+                                userEmail: { type: "string" },
+                                status: { type: "string" },
+                                lounge: { type: "string" },
+                                adultCount: { type: "number" },
+                                childCount: { type: "number" },
+                                pnr: { type: "string" }
+                            }
+                        }
+                    },
+                    pageSize: 20
+                },
+                height: 550,
+                scrollable: true,
+                sortable: true,
+                filterable: {
+                    mode: "row",
+                },
+                pageable: {
+                    input: true,
+                    numeric: false
+                },
+                columns: [
+                    { field: "created", title: "Created", format: "{0:MM/dd/yyyy}"},
+                    { field: "userFullname", title: "Name Surname"},
+                    { field: "userEmail", title: "Email"},
+                    { field: "status", title: "Status"},
+                    { field: "lounge", title: "Relevant Lounge"},
+                    { field: "adultCount", title: "Number of Adult" },
+                    { field: "childCount", title: "Number of Child" },
+                    { field: "pnr", title: "PNR"},
+                    { template: "<a href='/Ticket/Detail/#: data.id#' class='btn bg-gradient-info m-0'>Edit</a>", title: "Edit" },
+                ]
+            }).data("kendoGrid");
+        });
+
+    function FilterGrid(value) {
+        gridTickets.dataSource.filter({
+            field: "pnr",
+            operator: "contains",
+            value: value
+        });
+    }
+</script>

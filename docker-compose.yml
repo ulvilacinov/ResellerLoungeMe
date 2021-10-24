@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  resellerloungeme.web:
+    image: ${DOCKER_REGISTRY-}resellerloungemeweb
+    build:
+      context: .
+      dockerfile: src/ResellerLoungeMe.Web/Dockerfile

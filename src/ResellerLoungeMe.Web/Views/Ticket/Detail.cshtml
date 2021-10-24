@@ -1,0 +1,106 @@
+﻿@model ResellerLoungeMe.Application.Models.Ticket.TicketDetailModel
+ @{ 
+     ViewData["Title"] = Model.Pnr;
+ }
+<script src="~/js/Ticket-Detail.js"></script>
+
+    <header class="bg-gradient-dark">
+        <div class="page-header min-vh-50" style="        background-image: url('/assets/img/card-2.jpg');
+        background-position-y: 50%;">
+            <span class="mask bg-gradient-info opacity-8"></span>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center mx-auto my-auto">
+                        <h1 class="text-white">@Model.Lounge</h1>
+                        <h2 class="text-white">@Model.City | @Model.Country</h2>
+                        <h3 class="text-white">@Model.Airport| @Model.Direction</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="position-absolute w-100 z-index-1 bottom-0">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
+                    <defs>
+                        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+                    </defs>
+                    <g class="moving-waves">
+                        <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40"></use>
+                        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)"></use>
+                        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)"></use>
+                        <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)"></use>
+                        <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)"></use>
+                        <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255,255,255,1"></use>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </header>
+    <section class="py-7">
+        <div class="container">
+            <div class="card shadow-lg">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-12 pe-lg-0">
+                        <div class="m-5">
+                            <img class="w-100 border-radius-md" src="data:image/png;base64,@Model.QrCode" alt="image">
+                            <h3 class="text-info text-center pt-3">
+                                @Model.Pnr
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-6 col-12 ps-lg-0 my-auto">
+                        <div class="card-body">
+                            <div class="row mb-5">
+                                <h1 class="mb-0">@Model.UserFullname</h1>
+                                <h4 class="text-info">@Model.AdultCount Adult &amp; @Model.ChildCount Children</h4>
+                                <p class="mb-0">Expiry Date: @Model.ExpirationDate.ToString("dd/MM/yyyy")</p>
+
+                            </div>
+                            <div class="row mb-3">
+                                <h2>
+                                    Total: $ @Model.SoldPrice
+                                </h2>
+                            </div>
+
+                            <div class="row buttons-row">
+                                @if (Model.Status == "CANCELLED")
+                                {
+                                    <div class="alert alert-danger text-white font-weight-bold" role="alert">
+                                        This ticket is cancelled!
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="emailChb">
+                                            <label class="form-check-label" for="emailChb">Email</label>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="smsChb">
+                                            <label class="form-check-label" for="smsChb">Sms</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class="btn bg-gradient-success w-100" onclick="SendPass()">Send Pass</button>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class="btn bg-gradient-info w-100" onclick="PrintPass()">Print</button>
+                                    </div>
+                                    if (Model.Status != "USED")
+                                    {
+                                        <div class="col-md-4">
+                                            <button class="btn bg-gradient-danger w-100" onclick="Cancel()">Cancel</button>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        var ticketId = @Model.Id;
+
+    </script>
