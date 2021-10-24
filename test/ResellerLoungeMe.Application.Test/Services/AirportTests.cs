@@ -149,6 +149,8 @@ namespace ResellerLoungeMe.Application.Test
             Assert.Equal(expectedModel.Count, result.Count);
             Assert.Equal(expectedModel[0].Text, result[0].Text);
             Assert.Equal(expectedModel[0].Value, result[0].Value);
+            Assert.Equal(expectedModel[1].Text, result[1].Text);
+            Assert.Equal(expectedModel[1].Value, result[1].Value);
         }
     }
 }
