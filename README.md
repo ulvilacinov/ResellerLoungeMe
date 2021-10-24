@@ -45,7 +45,7 @@ Restart the service in the container on Azure. It will pull the latest docker im
 
 ![alt text](/backendStructure.jpeg?raw=true "Backend Structure")
 
-####The code of the application divided by 4 project;
+#### The code of the application divided by 4 project;
 
 * Core - Keeps the data transfer objects for working with adapters
 * Application - Handles the service layer with view models and utility classes which can be used in services. 
@@ -56,7 +56,7 @@ Restart the service in the container on Azure. It will pull the latest docker im
 
 All unit tests are implemented for Service layer. 
 
-###Things to do:
+### Things to do:
 
 - Add new environemnts on Azuer for Testing and Development.
 - Implemente unit tests for controller and adapter layers.
