@@ -9,14 +9,14 @@ using System.Text.Json;
 
 namespace ResellerLoungeMe.Core
 {
-    public sealed class LoungeMeServer : HttpClient
+    public sealed class LoungeMeClient : HttpClient
     {
-        private static readonly LoungeMeServer instance = new LoungeMeServer();
+        private static readonly LoungeMeClient instance = new LoungeMeClient();
         private static LoungeMeServerSettings _settings;
 
-        private LoungeMeServer() { }
+        private LoungeMeClient() { }
 
-        public static LoungeMeServer Instance(LoungeMeServerSettings settings)
+        public static LoungeMeClient Instance(LoungeMeServerSettings settings)
         {
             _settings = settings;
             instance.DefaultRequestHeaders.Clear();

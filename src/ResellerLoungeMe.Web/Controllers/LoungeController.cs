@@ -16,6 +16,7 @@ namespace ResellerLoungeMe.Controllers
         public async Task<IActionResult> Index(int id)
         {
             var result = await _service.GetLoungeAsync(id);
+
             return View(result);
         }
     }

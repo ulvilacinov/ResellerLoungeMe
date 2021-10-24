@@ -7,6 +7,6 @@ namespace ResellerLoungeMe.Application.Models
 {
     public class TerminalModel : BaseModel
     {
-        public ICollection<LoungeModel> Lounges { get; set; }
+        public IList<LoungeModel> Lounges { get; set; }
     }
 }

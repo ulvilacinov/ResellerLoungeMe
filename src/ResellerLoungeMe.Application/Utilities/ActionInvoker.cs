@@ -7,7 +7,7 @@ namespace ResellerLoungeMe.Application.Utilities
 {
     public class ActionInvoker : IActionInvoker
     {
-        public async Task<HttpResponseMessage> Invoke(Func<Task<HttpResponseMessage>> function, params object[] args)
+        public async Task<HttpResponseMessage> InvokeAsync(Func<Task<HttpResponseMessage>> function, params object[] args)
         {
             HttpResponseMessage result;
             result =await function.Invoke();

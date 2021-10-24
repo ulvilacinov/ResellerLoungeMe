@@ -18,18 +18,21 @@ namespace ResellerLoungeMe.Controllers
         public async Task<IActionResult> Index()
         {
             var list = await _service.GetTicketsAsync(); 
+
             return View(list);
         }
 
         public async Task<IActionResult> BuyTicket(TicketModel ticket)
         {
             var result = await _service.CreateTicketAsync(ticket);   
+
             return RedirectToAction("Detail",new { id = result });
         }
 
         public async Task<IActionResult> Detail(int id)
         {
             var result = await _service.GetTicketAsync(id);
+
             return View(result);
         }
 
@@ -37,6 +40,7 @@ namespace ResellerLoungeMe.Controllers
         public async Task<JsonResult> Cancel(int id)
         {
             var result = await _service.CancelTicketAsync(id);
+
             return Json(result);
         }
 
@@ -44,6 +48,7 @@ namespace ResellerLoungeMe.Controllers
         public async Task<JsonResult> SendPass(int id,ShareTicket ticket)
         {
             var result = await _service.ShareTicketAsync(id, ticket);
+
             return Json(result);
         }
 

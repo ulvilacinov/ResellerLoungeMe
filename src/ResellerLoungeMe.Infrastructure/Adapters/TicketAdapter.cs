@@ -14,7 +14,7 @@ namespace ResellerLoungeMe.Infrastructure.Adapters
 {
     public class TicketAdapter : ITicketAdapter
     {
-        private readonly LoungeMeServer _client;
+        private readonly LoungeMeClient _client;
         private readonly LoungeMeServerSettings _settings;
         private readonly IActionInvoker _actionInvoker;
 
@@ -22,13 +22,13 @@ namespace ResellerLoungeMe.Infrastructure.Adapters
         {
             _settings = settings.Value;
             _actionInvoker = actionInvoker;
-            _client = LoungeMeServer.Instance(_settings);
+            _client = LoungeMeClient.Instance(_settings);
         }
 
         public async Task<UserTicketDto> CreateTicketAsync(TicketDto ticket)
         {
             UserTicketDto result = new UserTicketDto();
-            var response = _actionInvoker.Invoke(async () =>
+            var response = _actionInvoker.InvokeAsync(async () =>
            {
                return await _client.PostAsync($"{_settings.BaseUrl}/tickets",
                  new StringContent(JsonConvert.SerializeObject(ticket), Encoding.UTF8,
@@ -43,7 +43,7 @@ namespace ResellerLoungeMe.Infrastructure.Adapters
         public async Task<UserTicketDto> GetTicketAsync(int id)
         {
             UserTicketDto result = new UserTicketDto();
-            var response = _actionInvoker.Invoke(async () =>
+            var response = _actionInvoker.InvokeAsync(async () =>
            {
                return await _client.GetAsync($"{_settings.BaseUrl}/tickets/{id}");
            });
@@ -56,7 +56,7 @@ namespace ResellerLoungeMe.Infrastructure.Adapters
         public async Task<List<UserTicketDto>> GetTicketsAsync()
         {
             List<UserTicketDto> result = new List<UserTicketDto>();
-            var response = _actionInvoker.Invoke(async () =>
+            var response = _actionInvoker.InvokeAsync(async () =>
             {
                 return await _client.GetAsync($"{_settings.BaseUrl}/tickets");
             });

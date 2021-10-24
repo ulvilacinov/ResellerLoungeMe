@@ -31,21 +31,21 @@ namespace ResellerLoungeMe.Application.Services
                 LocationDescription = data.LocationDescription,
                 UsageHourLimit = data.UsageHourLimit,
                 Terminal = data.Terminal?.Name,
-                ClosedSeasons = data.ClosedSeasons.Select(c => new ClosedSeasonsModel
+                ClosedSeasons = data.ClosedSeasons?.Select(c => new ClosedSeasonsModel
                 {
                     Description = c.Description,
                     EndDate = c.EndDate,
                     StartDate = c.StartDate
                 }).ToArray(),
-                OpenHours = data.OpenHours.Select(o => new OpenHoursModel
+                OpenHours = data.OpenHours?.Select(o => new OpenHoursModel
                 {
                     BeginHour = o.BeginHour,
                     Day = o.Day,
                     EndHour = o.EndHour
                 }).ToArray(),
-                Amenties = data.Features.Where(w => w.Feature.Type == "EXTRA_FEATURE").Select(s => s.Feature.Name).ToArray(),
-                Features = data.Features.Where(w => w.Feature.Type == "FEATURE").Select(s => s.Feature.Name).ToArray(),
-                Images = data.Images.Select(i => new ImageModel
+                Amenties = data.Features?.Where(w => w.Feature.Type == "EXTRA_FEATURE").Select(s => s.Feature.Name).ToArray(),
+                Features = data.Features?.Where(w => w.Feature.Type == "FEATURE").Select(s => s.Feature.Name).ToArray(),
+                Images = data.Images?.Select(i => new ImageModel
                 {
                     Url = i.Url,
                     OrderIndex = i.OrderIndex

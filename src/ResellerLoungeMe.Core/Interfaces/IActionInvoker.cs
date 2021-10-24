@@ -6,6 +6,6 @@ namespace ResellerLoungeMe.Core.Interfaces
 {
     public interface IActionInvoker
     {
-        Task<HttpResponseMessage> Invoke(Func<Task<HttpResponseMessage>> function,  params object[] args);
+        Task<HttpResponseMessage> InvokeAsync(Func<Task<HttpResponseMessage>> function,  params object[] args);
     }
 }

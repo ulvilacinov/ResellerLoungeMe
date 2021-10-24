@@ -30,10 +30,7 @@ namespace ResellerLoungeMe.Controllers
         public async Task<IActionResult> Lounges(int id)
         {
             var airportDetail =await _service.GetAirportAsync(id);
-            if (airportDetail == null)
-            {
-                return View("NotFound");
-            }
+           
             return View(airportDetail);
         }
 

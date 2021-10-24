@@ -2,7 +2,7 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim AS base
 WORKDIR /app
-EXPOSE 80
+EXPOSE 5000
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
@@ -17,6 +17,7 @@ RUN dotnet build "ResellerLoungeMe.Web.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "ResellerLoungeMe.Web.csproj" -c Release -o /app/publish
+RUN apt-get update && apt-get install -y libgdiplus
 
 FROM base AS final
 WORKDIR /app

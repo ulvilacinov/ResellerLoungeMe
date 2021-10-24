@@ -13,20 +13,20 @@ namespace ResellerLoungeMe.Infrastructure.Adapters
     {
         private readonly LoungeMeServerSettings _settings;
         private readonly IActionInvoker _actionInvoker;
-        private readonly LoungeMeServer _client;
+        private readonly LoungeMeClient _client;
 
         public AirportAdapter(IOptions<LoungeMeServerSettings> settings, IActionInvoker actionInvoker)
         {
             _settings = settings.Value;
             _actionInvoker = actionInvoker;
-            _client = LoungeMeServer.Instance(_settings);
+            _client = LoungeMeClient.Instance(_settings);
         }
 
         public async Task<List<AirportDto>> GetAirportsAsync(string searchKey)
         {
             List<AirportDto> result = new List<AirportDto>();
 
-            var response = _actionInvoker.Invoke(async () =>
+            var response = _actionInvoker.InvokeAsync(async () =>
             {
                 return await _client.GetAsync($"{_settings.BaseUrl}/search?searchKey={searchKey}");
             });
@@ -40,7 +40,7 @@ namespace ResellerLoungeMe.Infrastructure.Adapters
         {
             AirportDto result = new AirportDto();
 
-            var response = _actionInvoker.Invoke(async() =>
+            var response = _actionInvoker.InvokeAsync(async() =>
             {
                 return await _client.GetAsync($"{_settings.BaseUrl}/airports/{id}");
             });

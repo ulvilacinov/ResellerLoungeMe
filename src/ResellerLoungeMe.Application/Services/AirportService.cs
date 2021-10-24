@@ -22,10 +22,7 @@ namespace ResellerLoungeMe.Application.Services
         public async Task<AirportModel> GetAirportAsync(int id)
         {
             var data = await _airportAdapter.GetAirportAsync(id);
-            if (data == null)
-            {
-                return null;
-            }
+
             AirportModel result = new AirportModel
             {
                 City = data.City?.Name,
@@ -55,7 +52,7 @@ namespace ResellerLoungeMe.Application.Services
 
             var airportSelectList = airportList.Select(item => new SelectListItem
             {
-                Text = $"{item.City.Name} | {item.Name}",
+                Text = $"{item.City?.Name} | {item.Name}",
                 Value = item.Id.ToString()
             }).ToList();
 

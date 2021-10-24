@@ -11,7 +11,7 @@ namespace ResellerLoungeMe.Infrastructure.Adapters
 
     public class LoungeAdapter : ILoungeAdapter
     {
-        private readonly LoungeMeServer _client;
+        private readonly LoungeMeClient _client;
         private readonly LoungeMeServerSettings _settings;
         private readonly IActionInvoker _actionInvoker;
 
@@ -19,13 +19,13 @@ namespace ResellerLoungeMe.Infrastructure.Adapters
         {
             _settings = settings.Value;
             _actionInvoker = actionInvoker;
-            _client = LoungeMeServer.Instance(_settings);
+            _client = LoungeMeClient.Instance(_settings);
         }
 
         public async Task<LoungeDto> GetLoungeAsync(int id)
         {
             LoungeDto result = new LoungeDto();
-            var response = _actionInvoker.Invoke(async () =>
+            var response = _actionInvoker.InvokeAsync(async () =>
             {
                 return await _client.GetAsync($"{_settings.BaseUrl}/lounges/{id}");
             });
