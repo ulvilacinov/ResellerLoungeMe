@@ -6,6 +6,7 @@ $(document).ajaxStop(function () {
     $(".spinner").attr("style", "display: none !important");
 });
 
+var lang = "";
 function Cancel() {
     Swal.fire({
         title: "Are you sure?",
@@ -39,7 +40,7 @@ function Cancel() {
 function SendPass() {
     var isEmail = $("#emailChb").is(":checked");
     var isSms = $("#smsChb").is(":checked");
-    var lang = "";
+   
     if (isEmail || isSms) {
         Swal.fire({
             title: 'Please select language',
@@ -49,7 +50,6 @@ function SendPass() {
             showCancelButton: true,
             showConfirmButton: false
         }).then((result) => {
-            debugger;
             if (result.isConfirmed) {
                 var shareTicket = {
                     email: isEmail,
@@ -81,18 +81,39 @@ function SendPass() {
             }
 
         });
-
-        $(document).on('click', '.tr', function () {
-            lang = "tr";
-            swal.clickConfirm();
-        });
-        $(document).on('click', '.en', function () {
-            lang = "en";
-            swal.clickConfirm();
-        });
     } else {
         Swal.fire('Please select SMS or E-Mail');
     }
-
-
 }
+
+function PrintPass() {
+
+    //get card inner html
+    var element = $(".card.shadow-lg").clone();
+    // find buttons from cards html
+    var buttons = element.find(".row.buttons-row");
+    // remote buttons row
+    buttons.remove();
+
+    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+    mywindow.document.write('<html><head><title>' + document.title + '</title>');
+    mywindow.document.write('</head><body >');
+    mywindow.document.write('<h1>' + document.title + '</h1>');
+    mywindow.document.write(element[0].innerHTML);
+    mywindow.document.write('</body></html>');
+
+    mywindow.document.close(); // necessary for IE >= 10
+    mywindow.focus(); // necessary for IE >= 10*/
+
+    return true;
+}
+
+$(document).on('click', '.tr', function () {
+    lang = "tr";
+    swal.clickConfirm();
+});
+$(document).on('click', '.en', function () {
+    lang = "en";
+    swal.clickConfirm();
+});
