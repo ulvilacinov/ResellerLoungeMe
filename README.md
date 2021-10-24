@@ -58,9 +58,10 @@ All unit tests are implemented for Service layer.
 
 ## Things to do:
 
-- Add new environemnts on Azuer for Testing and Development.
-- Implemente unit tests for controller and adapter layers.
+- Add new environments on Azure for Testing and Development.
+- Implement unit tests for controller and adapter layers.
 - Implement integration tests.
+- Cache the airports and lounges with a day expire time
 
 
 
