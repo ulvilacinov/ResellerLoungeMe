@@ -2,8 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>aspnet-ResellerLoungeMe-552AC2AB-D6B6-4A0F-BC1C-9703F0F94D8D</UserSecretsId>
+    <UserSecretsId>6034448b-c58c-4ddd-bdfb-4e40b2ef024c</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
