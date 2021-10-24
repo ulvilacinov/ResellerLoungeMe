@@ -51,7 +51,7 @@ namespace ResellerLoungeMe.Application.Services
 
             var viewModel = new TicketDetailModel()
             {
-                AdultCount = result.GuestEntrances.Count + 1,
+                AdultCount = result.GuestEntrances == null ? 1 : result.GuestEntrances.Count + 1,
                 Airport = result.Lounge?.Terminal?.Airport?.Name,
                 ChildCount = result.ChildCount,
                 City = result.Lounge?.Terminal?.Airport?.City.Name,
@@ -75,18 +75,18 @@ namespace ResellerLoungeMe.Application.Services
         public async Task<List<TicketDisplayModel>> GetTicketsAsync()
         {
             var tickets = await _ticketAdapter.GetTicketsAsync();
-            
+
             var result = tickets.Select(w => new TicketDisplayModel
             {
                 ChildCount = w.ChildCount,
                 Created = w.Created,
                 Id = w.Id,
-                Lounge = w.Lounge.Name,
+                Lounge = w.Lounge?.Name,
                 Pnr = w.Pnr,
                 Status = w.State,
                 UserEmail = w.User?.Email,
                 UserFullname = w.User?.Name + " " + w.User?.Surname,
-                AdultCount = w.GuestEntrances.Count
+                AdultCount = w.GuestEntrances == null ? 0 : w.GuestEntrances.Count + 1
             }).ToList();
 
             return result;

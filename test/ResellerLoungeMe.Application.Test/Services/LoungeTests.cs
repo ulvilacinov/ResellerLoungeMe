@@ -58,6 +58,33 @@ namespace ResellerLoungeMe.Application.Test.Services
 
         }
 
+
+        [Fact]
+        public void GetLounge_Should_Handle_Null_Data()
+        {
+            LoungeDto loungeDto = new LoungeDto
+            {
+                Id = 1,
+                Name = "Salam Lounge",
+                Price = 23,
+                ChildPolicy = "2",
+                Direction = "DEPARTURE",
+                LocationDescription = "Location Description",
+                UsageHourLimit = "3",
+                Terminal = null,
+                OpenHours = null,
+                ClosedSeasons = null,
+                Features = null,
+                Images = null
+            };
+
+            _mockLoungeAdapter.Setup(w => w.GetLoungeAsync(1)).Returns(Task.FromResult(loungeDto));
+
+            var result = _loungeService.GetLoungeAsync(1).Result;
+
+            Assert.NotNull(result);
+        }
+
         private LoungeDto CreateLoungeDto()
         {
             return new LoungeDto
