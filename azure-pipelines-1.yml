@@ -34,7 +34,7 @@ stages:
         command: buildAndPush
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
-        buildContext: ./ResellerLoungeMe.Web
+        buildContext: ./src/ResellerLoungeMe.Web
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
