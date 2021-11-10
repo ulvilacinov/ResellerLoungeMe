@@ -37,7 +37,7 @@ namespace ResellerLoungeMe.Application.Test.Services
         [Fact]
         public void ShareTicket_Should_Return_True()
         {
-            var shareTicket = new Core.Models.ShareTicket { email = true, lang = "tr", phone = false };
+            var shareTicket = new ShareTicket { email = It.IsAny<bool>(), lang = It.IsAny<string>(), phone = It.IsAny<bool>() };
             _mockTicketAdapter.Setup(w => w.ShareTicketAsync(1, shareTicket)).Returns(Task.FromResult(true));
 
             var result = _ticketService.ShareTicketAsync(1, shareTicket).Result;
@@ -81,8 +81,8 @@ namespace ResellerLoungeMe.Application.Test.Services
                 GuestEntrances = null,
                 Lounge = null,
                 User = null,
-                Id = 1,
-                Pnr = "11223344"
+                Id = It.IsAny<int>(),
+                Pnr = It.IsAny<string>()
             };
 
             _mockTicketAdapter.Setup(w => w.GetTicketAsync(1)).Returns(Task.FromResult(ticketDto));

@@ -10,6 +10,10 @@ namespace ResellerLoungeMe.Application.Utilities
     {
         public static string GenerateQrCode(string pnr)
         {
+            if (string.IsNullOrEmpty(pnr))
+            {
+                return "";
+            }
             QRCoder.QRCodeGenerator qrGenerator = new QRCoder.QRCodeGenerator();
             QRCodeData qrCodeData = qrGenerator.CreateQrCode(pnr, QRCoder.QRCodeGenerator.ECCLevel.Q);
             QRCode qrCode = new QRCode(qrCodeData);

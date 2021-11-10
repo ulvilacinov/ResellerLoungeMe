@@ -64,13 +64,13 @@ namespace ResellerLoungeMe.Application.Test.Services
         {
             LoungeDto loungeDto = new LoungeDto
             {
-                Id = 1,
-                Name = "Salam Lounge",
-                Price = 23,
-                ChildPolicy = "2",
-                Direction = "DEPARTURE",
-                LocationDescription = "Location Description",
-                UsageHourLimit = "3",
+                Id = It.IsAny<int>(),
+                Name = It.IsAny<string>(),
+                Price = It.IsAny<int>(),
+                ChildPolicy = It.IsAny<string>(),
+                Direction = It.IsAny<string>(),
+                LocationDescription = It.IsAny<string>(),
+                UsageHourLimit = It.IsAny<string>(),
                 Terminal = null,
                 OpenHours = null,
                 ClosedSeasons = null,

@@ -30,9 +30,9 @@ namespace ResellerLoungeMe.Application.Test
         {
             AirportDto airportDto = new AirportDto
             {
-                Id = 1,
+                Id = It.IsAny<int>(),
                 City = null,
-                Name = "Frankfurt Airport",
+                Name = It.IsAny<string>(),
                 Terminals = null
             };
 
@@ -116,7 +116,7 @@ namespace ResellerLoungeMe.Application.Test
         {
             List<AirportDto> airportDtoList = new List<AirportDto>
             {
-                 new AirportDto { Id = 1, City = null, Name = "Frankfurt Airport" },
+                 new AirportDto { Id = It.IsAny<int>(), City = null, Name = It.IsAny<string>() },
             };
 
             _mockAirportAdapter.Setup(w => w.GetAirportsAsync("fran")).Returns(Task.FromResult(airportDtoList));
